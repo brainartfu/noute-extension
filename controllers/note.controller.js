@@ -49,7 +49,8 @@ const redirectURL = async (req, res) => {
 	if (collection) {
 		res.redirect(collection.site_url+'?donenote-id='+collection._id)
 	} else {
-		res.status(404).send({error: "Page not found."})
+		res.redirect("https://getnoute.com/install/")
+		// res.status(404).send({error: "Page not found."})
 	}
 }
 const sync = async (req, res) => {
