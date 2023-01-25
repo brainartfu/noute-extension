@@ -287,7 +287,7 @@ const statusNote = async(req, res) => {
 		note.save().then(result => {
 			const data = {
 				...result['_doc'],
-				own: true,
+				own: req.user._id.toString() === note.userId.toString(),
 				id: result._id
 			}
 			data.created_at = dateChange(data.created_at);
