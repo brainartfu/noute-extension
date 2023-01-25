@@ -223,7 +223,8 @@ const getCollection = async (req, res) => {
 				data.notes = [];
 				data.share = process.env.HOST_NAME + '/i/' + collections._id;
 				data.own = true;
-				data.trial = req.user.trial;
+				data.permision = req.user.permision
+				data.trial = 15 - parseInt((Date.now() - req.user.created_at)/86400000);
 				data.id = collection._id;
 				data.last_update = Date.now();
 				return res.send({data: data});
