@@ -157,7 +157,8 @@ const getCollection = async (req, res) => {
 				share: process.env.HOST_NAME + '/i/' + sharedNote._id,
 				notes: notesArr,
 				own: true,
-				trial: req.user.trial,
+				permision: req.user.permision,
+				trial: 15 - parseInt((Date.now() - req.user.created_at)/86400000),
 				id: sharedNote._id,
 				last_update: Date.now()
 			}})			
@@ -196,7 +197,8 @@ const getCollection = async (req, res) => {
 				share: process.env.HOST_NAME + '/i/' + existCollection._id,
 				notes: notesArr,
 				own: true,
-				trial: req.user.trial,
+				permision: req.user.permision,
+				trial: 15 - parseInt((Date.now() - req.user.created_at)/86400000),
 				id: existCollection._id,
 				last_update: Date.now()
 			}})
