@@ -286,9 +286,10 @@ const statusNote = async(req, res) => {
 		storeSiteMap(note.siteId, req.user._id, 'notestatus', note._id, {status: note.status==='active'?'done':'active'})
 		note.status = note.status==='active'?'done':'active';
 		note.save().then(result => {
+			
 			const data = {
 				...result['_doc'],
-				own: true,
+				own: req.user._id === note.userId,
 				id: result._id
 			}
 			data.created_at = dateChange(data.created_at);
